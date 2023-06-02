@@ -1,0 +1,1 @@
+export const initFormObjectKey = '@formReducer/INIT_FORM_OBJECT';

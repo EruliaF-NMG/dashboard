@@ -1,8 +1,12 @@
+import { BaseTemplate } from '../../../ui-elements/templates/Base.template';
+import { LoginForm } from './LoginForm.organism';
 
 const Login = () =>{
-    return <div><h1 className="text-3xl font-bold underline">
-   login
-  </h1></div>
+    return (
+        <BaseTemplate className='items-center justify-center'>
+            <LoginForm/>
+        </BaseTemplate>
+    )
 }
 
 export default Login;
