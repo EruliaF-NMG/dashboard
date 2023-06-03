@@ -1,8 +1,11 @@
 import Routes from './Routers';
+import Store from './Store';
 
 const App=() =>{
   return (
-    <Routes/>
+    <Store>
+      <Routes/>
+    </Store>
   );
 }
 

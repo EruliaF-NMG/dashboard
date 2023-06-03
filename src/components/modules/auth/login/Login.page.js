@@ -1,5 +1,6 @@
 import { BaseTemplate } from '../../../ui-elements/templates/Base.template';
 import { LoginForm } from './LoginForm.organism';
+import Guest from '../../../hoc-middlewares/Guest';
 
 const Login = () =>{
     return (
@@ -9,4 +10,4 @@ const Login = () =>{
     )
 }
 
-export default Login;
+export default Guest(Login);

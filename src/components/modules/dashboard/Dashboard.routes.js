@@ -6,7 +6,7 @@ import Home from './home/Home.page';
 const DashboardRoutes = () => {
     return (
         <Routes>  
-             <Route exact path='/dashboard' element={<Home/>}/>
+             <Route exact path='/dashboard' element={<Home />}/>
         </Routes>  
     );
 };
