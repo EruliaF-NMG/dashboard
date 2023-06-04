@@ -18,3 +18,7 @@ export const removeAuthDataKey = '@authReducer/REMOVE_AUTH_REDUCER_DATA';
 
 export const setPageLoadKey = '@UIReducer/SET_PAGE_LOAD';
 export const setPageLoadReducerKey = '@UIReducer/SET_PAGE_REDUCER_LOAD';
+
+
+export const requestByAPIKey = '@ResponseReducer/REQUEST_DATA_BY_API';
+export const setRequestDataKey = '@ResponseReducer/SET_REQUEST_DATA';

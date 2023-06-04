@@ -1,8 +1,6 @@
-import { useSelector,useDispatch } from 'react-redux';
 import { InputBox } from './InputBox.molecule';
 import { emptyFunction, htmlInputTypes } from '../../../../config/defaultProps.config';
-import { _get } from '../../../../helpers/lodash.wrappers';
-import { changeInput } from '../../../../helpers/core-actions/form.action';
+import { useFormState } from '../../../../custom-hooks/useFormState';
 
 const InputBoxWithState = ({
     name="",
@@ -15,15 +13,7 @@ const InputBoxWithState = ({
     onChange=emptyFunction,
     onClick=emptyFunction
 }) => {
-
-    const dispatch = useDispatch();
-    const inputValue = useSelector(state => _get(state,`formState.${setGroupName}.${name}`,''));
-    const errors = useSelector(state => _get(state,`formState.${setGroupName}._errors`,[]));
-
-    const getErrorMessage = () => {
-        const errorObject = errors.find(item => item.property === name)||{};
-        return errorObject.message || "";
-    }
+    const [inputValue,getErrorMessage,onChangeInput] = useFormState(setGroupName,name);
 
     return (
         <InputBox
@@ -36,7 +26,7 @@ const InputBoxWithState = ({
             wrapperStyleClass={wrapperStyleClass}
             iconElement={iconElement}
             onChange={(value,key)=>{
-                dispatch(changeInput(setGroupName,name,value));
+                onChangeInput(value);
                 onChange(value,key);
             }}
             onClick={onClick}

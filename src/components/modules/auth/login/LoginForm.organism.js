@@ -8,13 +8,11 @@ import { htmlInputTypes } from '../../../../config/defaultProps.config';
 import { FormWrapper } from '../../../ui-elements/form/form-wrapper/FormWrapper.atom';
 import { ButtonWithState } from '../../../ui-elements/form/button/ButtonWithState.molecule';
 import { loginUser } from '../../../../helpers/core-actions/auth.action';
-import { useSelector } from 'react-redux';
+
 
 const formKey='loginFromData';
 
 const LoginForm = () =>{
-    const auth = useSelector(state => state.authState);
-    console.log(auth,"======");
     return(
     <Card className='w-[45%] flex-col lg:flex-row'>
         <FormWrapper 

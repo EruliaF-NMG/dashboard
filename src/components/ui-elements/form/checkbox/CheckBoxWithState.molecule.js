@@ -1,9 +1,7 @@
-import { useSelector,useDispatch } from 'react-redux';
-
 import { emptyFunction } from '../../../../config/defaultProps.config';
 import { CheckBox } from './CheckBox.molecule';
-import { _get } from '../../../../helpers/lodash.wrappers';
 import { changeInput } from '../../../../helpers/core-actions/form.action';
+import { useFormState } from '../../../../custom-hooks/useFormState';
 
 const CheckBoxWithState = ({
     name="",
@@ -14,8 +12,8 @@ const CheckBoxWithState = ({
     setGroupName="",
     onChange=emptyFunction
 }) => {
-    const dispatch = useDispatch();
-    const inputValue = useSelector(state => _get(state,`formState.${setGroupName}.${name}`,false));
+
+    const [inputValue,getErrorMessage,onChangeInput] = useFormState(setGroupName,name);
 
     return (
         <CheckBox
@@ -26,7 +24,7 @@ const CheckBoxWithState = ({
             labelElement={labelElement}
             isChecked={inputValue}
             onChange={(value,key)=>{
-                dispatch(changeInput(setGroupName,name,value));
+                onChangeInput(value);
                 onChange(value,key);
             }}
         />

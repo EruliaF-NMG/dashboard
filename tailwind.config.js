@@ -15,6 +15,8 @@ module.exports = {
         'custom-purple-500':'#694BDB',
 
         'custom-green-100':'#2AEBC8',
+        
+        'custom-text-black-color-200':'#4A4A4A'
       }
     },
   },

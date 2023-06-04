@@ -1,14 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser,faLock } from '@fortawesome/free-solid-svg-icons'
+import { faUser,faLock,faChartColumn, faBars, faSearch,faGear,faCartShopping,faXmark } from '@fortawesome/free-solid-svg-icons'
 
 const Icon=({
-    icon={}
+    icon={},
+    className=""
 })=>{
-    return <FontAwesomeIcon icon={icon} size='sm'/>
+    return <FontAwesomeIcon icon={icon} size='sm' className={className}/>
 }
 
 export {
     Icon,
     faUser,
-    faLock
+    faLock,
+    faChartColumn,
+    faBars,
+    faSearch,
+    faGear,
+    faCartShopping,
+    faXmark
 }

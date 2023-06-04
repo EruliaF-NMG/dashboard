@@ -1,5 +1,6 @@
 import axios from 'axios';
-
+import {  _get } from './lodash.wrappers';
+import { checkUserINLocalStorage } from './manageStorage.helper';
 
 /**
  * Generate api header
@@ -12,6 +13,14 @@ const getHeader=(isAuth)=>{
         'Content-Type':'application/json'
     };
 
+    if (isAuth === true) {
+        let userData = checkUserINLocalStorage();
+        const token = _get(userData, 'result.token', '');
+    
+        if (token === '') window.location.reload();
+    
+        header['Authorization'] = `Bearer ${token}`;
+    }
     return header;
 }
 
