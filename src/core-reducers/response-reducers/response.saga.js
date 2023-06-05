@@ -12,9 +12,12 @@ import {
  */
 function* requestData({payload}) { 
     // call api
+    console.log("==============",payload)
     try{
         const result = yield call(callAPI,payload.apiUrl);
+        console.log("==============",result)
         if(result.data.status !== "ERROR") {
+            console.log("==============")
             yield put({ 
                 type: setRequestDataKey, 
                 payload: {

@@ -1,4 +1,4 @@
-import { useState,useRef,useEffect } from 'react';
+import { useState,useRef,useEffect,memo } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 
 import { InputBox } from './InputBox.molecule';
@@ -10,8 +10,9 @@ import { requestData } from '../../../../helpers/core-actions/request.actions';
 import { _get } from '../../../../helpers/lodash.wrappers';
 import { emptyFunction } from '../../../../config/defaultProps.config';
 import { defaultStock } from '../../../../config/core.config';
+import { getStockInfoAPI } from '../../../../config/apiEndPoints.config';
 
-const Autocomplete = ({
+const Autocomplete = memo(({
     setGroupName="",
     name="",
     placeholder="",
@@ -29,7 +30,8 @@ const Autocomplete = ({
     const [text,setText]=useState(inputValue);
     const [isShowList,setShowList]=useState(false);
     const dispatch = useDispatch();
-    const itemList = useSelector(state => _get(state,`response.${apiKey}`,[]));
+    const responses = useSelector(state => _get(state,`response`,{}));
+    const itemList = _get(responses,`${apiKey}`,[]);
 
     const handleOutside = (event) => {
         if (ref.current && !ref.current.contains(event.target)) {
@@ -44,22 +46,28 @@ const Autocomplete = ({
         });
     }
 
+    const getData=(value)=>{
+        const stateKey= `${getStockInfoAPI.key}_${value}`;
+        if(_get(responses,`${stateKey}`,[]).length === 0 )  dispatch(requestData(getStockInfoAPI.url.replace('{STOCK_NAME}', value),stateKey));
+    }
+
     const setSearchText = (key) => {
         setText(key);
         onChangeInput(key);
-        onChange(key)
+        getData(key)
     }
 
     useEffect(() => {
-        if(itemList.length === 0 ) dispatch(requestData(apiUrl,apiKey,()=>{
-            onChange(defaultStock);
-        }));
+        getData(defaultStock);
+        // setTimeout used due to api request amount timeout
+        if(itemList.length === 0 ) setTimeout(()=>dispatch(requestData(apiUrl,apiKey)),6000)
         document.addEventListener('mousemove', handleOutside, true);
         return () => {
             document.removeEventListener('mousemove', handleOutside, true);
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
+    
     return (
         <div className={className} ref={ref}>
             <FormWrapper 
@@ -108,7 +116,7 @@ const Autocomplete = ({
             </FormWrapper>
         </div>
     )
-}
+});
 
 export {
     Autocomplete

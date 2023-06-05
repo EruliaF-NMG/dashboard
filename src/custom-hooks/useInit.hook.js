@@ -3,6 +3,10 @@ import { useSelector,useDispatch } from 'react-redux';
 import { checkUserINLocalStorage } from '../helpers/manageStorage.helper';
 import { syncWithLocalStorage,setASGuestUser } from '../helpers/core-actions/auth.action';
 
+/**
+ * initialise and sync with local storage
+ * @returns 
+ */
 const useInit = () => {
 
     const isLogged = useSelector(state => state.authState.isAuth);

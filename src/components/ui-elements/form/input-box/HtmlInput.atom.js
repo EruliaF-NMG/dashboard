@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { emptyFunction,htmlInputTypes } from '../../../../config/defaultProps.config';
 
 const HtmlInput = ({
@@ -20,6 +21,16 @@ const HtmlInput = ({
             onClick={(event)=>onClick(event)}
         />
     )
+}
+
+HtmlInput.propTypes = {
+    name: PropTypes.string,
+    value: PropTypes.string,
+    type: PropTypes.string,
+    className: PropTypes.string,
+    placeholder: PropTypes.string,
+    onChange: PropTypes.func,
+    onClick: PropTypes.func,
 }
 
 export {

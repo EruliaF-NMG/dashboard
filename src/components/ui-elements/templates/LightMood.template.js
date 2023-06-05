@@ -20,7 +20,7 @@ const LightMoodTemplate = ({
                         toggleStatus={toggleState}
                         onToggle={()=>setToggle(!toggleState)}
                     />
-                    <div className="p-4  rounded-lg mt-[72px]">
+                    <div className="p-4  rounded-lg mt-[72px]" data-testid="dashboard">
                         {children}
                     </div>
                 </div>

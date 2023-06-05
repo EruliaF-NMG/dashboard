@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 const Card =({
     className="",
@@ -8,6 +9,11 @@ const Card =({
             {children}
         </div>
     )
+}
+
+Card.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node,
 }
 
 export {

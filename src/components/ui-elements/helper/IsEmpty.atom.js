@@ -1,4 +1,6 @@
 import { Fragment } from 'react';
+import PropTypes from 'prop-types';
+
 import { isEmpty } from '../../../helpers/common.helper';
 
 const IsEmpty=({
@@ -15,6 +17,12 @@ const IsEmpty=({
             }
         </Fragment>
     )
+}
+
+IsEmpty.propTypes = {
+    value: PropTypes.any,
+    elementIFEmpty: PropTypes.node,
+    children: PropTypes.node,
 }
 
 export {

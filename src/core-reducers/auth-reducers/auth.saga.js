@@ -71,7 +71,6 @@ function* syncWithLocalStorage({payload}) {
  * sync with LocalStorage
  */
 function* setASGuestUser() { 
-    console.log("3");
     yield put({ 
         type: removeAuthDataKey,
     });

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 import { initFormObject, removeFromGroup } from '../../../../helpers/core-actions/form.action';
@@ -25,6 +26,13 @@ const FormWrapper = ({
             {children}
         </div>
     );
+}
+
+FormWrapper.propTypes = {
+    className: PropTypes.string,
+    setGroupName: PropTypes.string,
+    setFormObject: PropTypes.object,
+    children: PropTypes.node,
 }
 
 export {

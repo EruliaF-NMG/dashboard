@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { InputBox } from './InputBox.molecule';
 import { emptyFunction, htmlInputTypes } from '../../../../config/defaultProps.config';
 import { useFormState } from '../../../../custom-hooks/useFormState';
@@ -32,6 +33,18 @@ const InputBoxWithState = ({
             onClick={onClick}
         />
     )
+}
+
+InputBoxWithState.propTypes = {
+    name: PropTypes.string,
+    inputStyleClass: PropTypes.string,
+    type: PropTypes.string,
+    wrapperStyleClass: PropTypes.string,
+    setGroupName:PropTypes.string,
+    iconElement:PropTypes.node,
+    placeholder: PropTypes.string,
+    onChange: PropTypes.func,
+    onClick: PropTypes.func,
 }
 
 export {

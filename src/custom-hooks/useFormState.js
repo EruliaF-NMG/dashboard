@@ -2,6 +2,12 @@ import { useSelector,useDispatch } from 'react-redux';
 import { _get } from '../helpers/lodash.wrappers';
 import { changeInput } from '../helpers/core-actions/form.action';
 
+/**
+ * set and get input values for global state
+ * @param {*} setGroupName 
+ * @param {*} name 
+ * @returns 
+ */
 const useFormState=(setGroupName,name)=>{
 
     const dispatch = useDispatch();

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { emptyFunction } from '../../../../config/defaultProps.config';
 import { CheckBox } from './CheckBox.molecule';
 import { changeInput } from '../../../../helpers/core-actions/form.action';
@@ -29,6 +31,16 @@ const CheckBoxWithState = ({
             }}
         />
     )
+}
+
+CheckBoxWithState.propTypes = {
+    name: PropTypes.string,
+    inputStyleClass: PropTypes.string,
+    wrapperStyleClass: PropTypes.string,
+    labelStyleClass: PropTypes.string,
+    labelElement: PropTypes.node,
+    setGroupName: PropTypes.string,
+    onChange: PropTypes.func,
 }
 
 export {

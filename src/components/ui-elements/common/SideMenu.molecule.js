@@ -1,11 +1,16 @@
 import { NavLink } from 'react-router-dom';
-import { Icon, faChartColumn,faGear,faUser,faCartShopping } from './Icon.atom';
+import { Icon, faChartColumn,faGear,faUser,faCartShopping,faRightFromBracket } from './Icon.atom';
 import { AutocompleteWrapper } from '../../ui-elements/form/input-box/AutocompleteWrapper.molecule';
+import { useDispatch } from 'react-redux';
+import { logoutUser } from '../../../helpers/core-actions/auth.action';
+
 
 const SideMenu=({
     toggleState=false
 })=>{
-    console.log(toggleState);
+
+    const dispatch = useDispatch();
+
     return (
         <aside className={`fixed top-0 left-0 z-40 sm:w-[200px] w-full h-screen transition-transform sm:translate-x-0 mt-[72px] sm:mt-0 ${toggleState?'transform-none':'-translate-x-full'} `}>
             <div className="h-full overflow-y-auto bg-gray-50 dark:bg-gray-800">
@@ -40,6 +45,12 @@ const SideMenu=({
                             <Icon icon={faGear} />
                             <span className="ml-3">Settings</span>
                         </NavLink>
+                    </li>
+                    <li className="px-8 sm:p-3 p-3 border-b border-gray-300" onClick={()=>dispatch(logoutUser())}>
+                        <div className="flex items-center text-gray-900">
+                            <Icon icon={faRightFromBracket} />
+                            <span className="ml-3">Logout</span>
+                        </div>
                     </li>
                 </ul>
             </div>
